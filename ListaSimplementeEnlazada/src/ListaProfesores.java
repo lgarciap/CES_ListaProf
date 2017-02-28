@@ -4,7 +4,6 @@ public class ListaProfesores {
 	private ListaSecuencial<Profesor> listaCat;
 	
 	public ListaProfesores(){
-		if (listaCat.estaVacia())
-			System.out.println("Yey!!!");
+
 	}
 }
