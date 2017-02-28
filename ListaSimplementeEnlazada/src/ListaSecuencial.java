@@ -6,7 +6,7 @@
  * @author flaquitqm
  *
  */
-public class ListaSecuencial<E> implements ILista {
+public class ListaSecuencial<E> implements ILista<E> {
 	private int tamanio;
 	private E[] arreglo;
 	private int cantElementos;
@@ -46,104 +46,130 @@ public class ListaSecuencial<E> implements ILista {
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return tamanio;
 	}
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-		return false;
+		if(cantElementos > 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+		
 	}
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
+		arreglo = null;
 		
 	}
 	@Override
 	public void addFirst(Object value) {
 		// TODO Auto-generated method stub
+		if(tamanio > cantElementos)
+		{
+			for (int i = cantElementos; i > 0; i--) {
+				
+				arreglo[cantElementos] = arreglo[cantElementos - 1];
+			
+			}
+			
+		}
+		
 		
 	}
 	@Override
 	public void addLast(Object value) {
 		// TODO Auto-generated method stub
 		
+		if(tamanio > cantElementos)
+		{
+			arreglo[cantElementos+1] = (E)value;
+		}
+		
 	}
 	@Override
-	public Object getFirst() {
+	public E getFirst() {
+		// TODO Auto-generated method stub
+		return arreglo[0];
+	}
+	@Override
+	public E getLast() {
+		// TODO Auto-generated method stub
+		return arreglo[tamanio-1];
+	}
+	@Override
+	public E removeFirst() {
+		// TODO Auto-generated method stub
+		arreglo[0] = null;
+		return (E)arreglo;
+	}
+	@Override
+	public E removeLast() {
+		// TODO Auto-generated method stub
+		arreglo[cantElementos+1] = null;
+		return (E)arreglo;
+	}
+	@Override
+	public E remove(E value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object getLast() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Object removeFirst() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Object removeLast() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Object remove(Object value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void add(Object value) {
+	public void add(E value) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public Object remove() {
+	public E remove() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object get() {
+	public E get() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public boolean contains(Object value) {
+	public boolean contains(E value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
-	public int indexOf(Object value) {
+	public int indexOf(E value) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
-	public int lastIndexOf(Object value) {
+	public int lastIndexOf(E value) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
-	public Object get(int i) {
+	public E get(int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object set(int i, Object o) {
+	public E set(int i, E o) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public void add(int i, Object o) {
+	public void add(int i, E o) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public Object remove(int i) {
+	public E remove(int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+		
 	
 	
 }
