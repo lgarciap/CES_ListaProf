@@ -6,7 +6,7 @@
  * @author flaquitqm
  *
  */
-public class ListaSimplementeEnlazada<E> implements ILista{
+public class ListaSimplementeEnlazada<E> implements ILista<E>{
 	private int cantEl;
 	private Nodo<E> cabeza;
 	/**
@@ -41,109 +41,111 @@ public class ListaSimplementeEnlazada<E> implements ILista{
 	public void setCabeza(Nodo<E> cabeza) {
 		this.cabeza = cabeza;
 	}
+	
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		if (cabeza != null)
+			return 0;
+		else
+			return cantEl;
 	}
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-		return false;
+		if (cabeza == null)
+			return true;
+		else
+			return false;
 	}
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+		cabeza = null;
 	}
 	@Override
-	public void addFirst(Object value) {
+	public void addFirst(E value) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void addLast(Object value) {
+	public void addLast(E value) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public Object getFirst() {
+	public E getFirst() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object getLast() {
+	public E getLast() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object removeFirst() {
+	public E removeFirst() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object removeLast() {
+	public E removeLast() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object remove(Object value) {
+	public E remove(E value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public void add(Object value) {
+	public void add(E value) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public Object remove() {
+	public E remove() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object get() {
+	public E get() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public boolean contains(Object value) {
+	public boolean contains(E value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
-	public int indexOf(Object value) {
+	public int indexOf(E value) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
-	public int lastIndexOf(Object value) {
+	public int lastIndexOf(E value) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
-	public Object get(int i) {
+	public E get(int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object set(int i, Object o) {
+	public E set(int i, E o) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public void add(int i, Object o) {
+	public void add(int i, E o) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public Object remove(int i) {
+	public E remove(int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	
-	
-	
 }
