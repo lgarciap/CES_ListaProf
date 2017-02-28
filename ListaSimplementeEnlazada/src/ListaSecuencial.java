@@ -94,6 +94,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 	}
 	@Override
 	public E getFirst() {
+
 		// TODO Auto-generated method stub
 		return arreglo[0];
 	}
@@ -116,6 +117,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 	}
 	@Override
 	public E remove(E value) {
+
 		// TODO Auto-generated method stub
 		return null;
 	}
