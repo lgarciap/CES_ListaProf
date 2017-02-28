@@ -112,18 +112,38 @@ public class ListaSecuencial<E> implements ILista<E> {
 	@Override
 	public E removeLast() {
 		// TODO Auto-generated method stub
-		arreglo[cantElementos+1] = null;
+		arreglo[cantElementos] = null;
 		return (E)arreglo;
 	}
 	@Override
 	public E remove(E value) {
 
 		// TODO Auto-generated method stub
-		return null;
+		for(int i=0 ; i < arreglo.length;i++)
+		{
+			if(arreglo[i] == value)
+			{
+				arreglo[i] = null;
+				
+			}
+			
+		}
+		return (E)arreglo;
+		
 	}
 	@Override
 	public void add(E value) {
 		// TODO Auto-generated method stub
+		for(int i=0 ; i < arreglo.length;i++)
+		{
+			if(arreglo[i] != value)
+			{
+				arreglo[i] = value;
+				
+			}
+			
+		}
+		
 		
 	}
 	@Override
