@@ -13,11 +13,15 @@ public class ListaSecuencial<E> implements ILista<E> {
 	/**
 	 * 
 	 */
+	
+	
 	public ListaSecuencial(int tamanio) {
 		// TODO Auto-generated constructor stub
+		this.tamanio = tamanio;
 		arreglo = (E[]) new Object[tamanio];
 		cantElementos = 0;
 	}
+	
 	/**
 	 * @return the tamanio
 	 */
@@ -65,18 +69,20 @@ public class ListaSecuencial<E> implements ILista<E> {
 	public void clear() {
 		// TODO Auto-generated method stub
 		arreglo = null;
-		
+		this.cantElementos = 0;
 	}
 	@Override
 	public void addFirst(Object value) {
 		// TODO Auto-generated method stub
 		if(tamanio > cantElementos)
 		{
+			arreglo[cantElementos] = (E)value;
 			for (int i = cantElementos; i > 0; i--) {
-				
+				E temp = arreglo[cantElementos];
 				arreglo[cantElementos] = arreglo[cantElementos - 1];
-			
+				arreglo[cantElementos - 1] = temp;
 			}
+			cantElementos++;
 			
 		}
 		
@@ -85,10 +91,10 @@ public class ListaSecuencial<E> implements ILista<E> {
 	@Override
 	public void addLast(Object value) {
 		// TODO Auto-generated method stub
-		
 		if(tamanio > cantElementos)
 		{
-			arreglo[cantElementos+1] = (E)value;
+			arreglo[cantElementos] = (E)value;
+			cantElementos++;
 		}
 		
 	}
@@ -112,7 +118,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 	@Override
 	public E removeLast() {
 		// TODO Auto-generated method stub
-		arreglo[cantElementos] = null;
+		arreglo[cantElementos-1] = null;
 		return (E)arreglo;
 	}
 	@Override
@@ -127,6 +133,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 				
 			}
 			
+			
 		}
 		return (E)arreglo;
 		
@@ -134,14 +141,11 @@ public class ListaSecuencial<E> implements ILista<E> {
 	@Override
 	public void add(E value) {
 		// TODO Auto-generated method stub
-		for(int i=0 ; i < arreglo.length;i++)
+		
+		if(tamanio > cantElementos)
 		{
-			if(arreglo[i] != value)
-			{
-				arreglo[i] = value;
-				
-			}
-			
+			arreglo[cantElementos] = (E)value;
+			cantElementos++;
 		}
 		
 		
@@ -149,31 +153,89 @@ public class ListaSecuencial<E> implements ILista<E> {
 	@Override
 	public E remove() {
 		// TODO Auto-generated method stub
-		return null;
+		if(cantElementos>0)
+		{
+			arreglo[cantElementos-1] = null;
+			return (E)arreglo;
+		}
+		else
+		{
+			return (E)"Vacio";
+		}
 	}
 	@Override
 	public E get() {
 		// TODO Auto-generated method stub
-		return null;
+		if(cantElementos>0)
+		{
+			return (E)arreglo[cantElementos-1];
+		}
+		else
+		{
+			return null;
+		}
 	}
 	@Override
 	public boolean contains(E value) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean resultado = false;
+		for(int i=0 ; i < arreglo.length;i++)
+		{
+			if(arreglo[i] == value)
+			{
+				resultado = true;
+				i = arreglo.length;
+			}
+			else
+			{
+				resultado = false;
+			}
+			
+		}
+		return resultado;
+		
 	}
 	@Override
 	public int indexOf(E value) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado = 0;
+		for(int i=0 ; i < arreglo.length;i++)
+		{
+			if(arreglo[i] == value)
+			{
+				resultado = i;
+				i = arreglo.length;
+			}
+			else
+			{
+				resultado = -1;
+			}
+			
+		}
+		return resultado;
+		
+		
 	}
 	@Override
 	public int lastIndexOf(E value) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado = 0;
+		for(int i=cantElementos-1 ; i < arreglo.length;i--)
+		{
+			if(arreglo[i] == value)
+			{
+				resultado = i;
+				i = arreglo.length+1;
+			}
+			else
+			{
+				resultado = -1;
+			}
+			
+		}
+		return resultado;
+		
 	}
 	@Override
 	public E get(int i) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
@@ -188,8 +250,22 @@ public class ListaSecuencial<E> implements ILista<E> {
 	}
 	@Override
 	public E remove(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		for(int j=0 ; j < arreglo.length;j++)
+		{
+			if(i< arreglo.length)
+			{
+				if(arreglo[j] == arreglo[i])
+				{
+					arreglo[j] = null;
+					
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
+		return (E)arreglo;
 	}
 		
 	
