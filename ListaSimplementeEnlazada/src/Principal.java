@@ -22,17 +22,11 @@ public class Principal {
 		lista.addFirst(9);
 		lista.addFirst(4);
 		lista.addFirst(6);
-		lista.addFirst(9);
-		lista.addFirst(9);
-		int value = 9;
-		
-		if(lista.get(value)!=null)
-		
-		{
-			System.out.println(lista);
-		}
-		else
-			System.out.println("error");
+		lista.addFirst(8);
+		lista.addFirst(7);
+		int value = 3;
+		lista.removeFirst();
+			System.out.println(lista.get(value));
 	}
 	
 	

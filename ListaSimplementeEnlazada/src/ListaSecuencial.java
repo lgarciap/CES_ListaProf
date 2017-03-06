@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * 
  */
@@ -28,6 +30,40 @@ public class ListaSecuencial<E> implements ILista<E> {
 	public int getTamanio() {
 		return tamanio;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(arreglo);
+		result = prime * result + cantElementos;
+		result = prime * result + tamanio;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ListaSecuencial other = (ListaSecuencial) obj;
+		if (!Arrays.equals(arreglo, other.arreglo))
+			return false;
+		if (cantElementos != other.cantElementos)
+			return false;
+		if (tamanio != other.tamanio)
+			return false;
+		return true;
+	}
+
 	/**
 	 * @param tamanio the tamanio to set
 	 */
@@ -113,7 +149,17 @@ public class ListaSecuencial<E> implements ILista<E> {
 	public E removeFirst() {
 		// TODO Auto-generated method stub
 		arreglo[0] = null;
+		for(int i=0 ; i < arreglo.length;i++)
+		{
+			if((arreglo[i] == null) && arreglo[i+1] != null )
+			{
+				arreglo[i]=arreglo[i+1];
+				arreglo[i+1] = null;
+				
+			}
+		}
 		return (E)arreglo;
+		
 	}
 	@Override
 	public E removeLast() {
@@ -130,11 +176,15 @@ public class ListaSecuencial<E> implements ILista<E> {
 			if(arreglo[i] == value)
 			{
 				arreglo[i] = null;
+			}
+			if((arreglo[i] == null) && arreglo[i+1] != null )
+			{
+				arreglo[i]=arreglo[i+1];
+				arreglo[i+1] = null;
 				
 			}
-			
-			
 		}
+		
 		return (E)arreglo;
 		
 	}
@@ -160,7 +210,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		}
 		else
 		{
-			return (E)"Vacio";
+			return null;
 		}
 	}
 	@Override
@@ -236,6 +286,10 @@ public class ListaSecuencial<E> implements ILista<E> {
 	}
 	@Override
 	public E get(int i) {
+		while(i<tamanio)
+		{
+			return (E)arreglo[i];
+		}
 		return null;
 	}
 	@Override
@@ -259,13 +313,17 @@ public class ListaSecuencial<E> implements ILista<E> {
 					arreglo[j] = null;
 					
 				}
-				else
+				if((arreglo[j] == null) && arreglo[j+1] != null )
 				{
-					return null;
+					arreglo[j]=arreglo[j+1];
+					arreglo[j+1] = null;
+					
 				}
+				
 			}
 		}
 		return (E)arreglo;
+		
 	}
 		
 	
