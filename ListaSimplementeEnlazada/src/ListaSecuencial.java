@@ -173,7 +173,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		// TODO Auto-generated method stub
 		for(int i=0 ; i < arreglo.length;i++)
 		{
-			if(arreglo[i] == value)
+			if(arreglo[i].equals(value))
 			{
 				arreglo[i] = null;
 			}
@@ -231,7 +231,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		boolean resultado = false;
 		for(int i=0 ; i < arreglo.length;i++)
 		{
-			if(arreglo[i] == value)
+			if(arreglo[i].equals(value))
 			{
 				resultado = true;
 				i = arreglo.length;
@@ -250,7 +250,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		int resultado = 0;
 		for(int i=0 ; i < arreglo.length;i++)
 		{
-			if(arreglo[i] == value)
+			if(arreglo[i].equals(value))
 			{
 				resultado = i;
 				i = arreglo.length;
@@ -270,7 +270,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		int resultado = 0;
 		for(int i=cantElementos-1 ; i < arreglo.length;i--)
 		{
-			if(arreglo[i] == value)
+			if(arreglo[i].equals(value))
 			{
 				resultado = i;
 				i = arreglo.length+1;
@@ -286,21 +286,41 @@ public class ListaSecuencial<E> implements ILista<E> {
 	}
 	@Override
 	public E get(int i) {
-		while(i<tamanio)
+		
+		if((i<tamanio) && (arreglo[i]!=null))
 		{
-			return (E)arreglo[i];
+				return (E)arreglo[i];
 		}
-		return null;
+		else
+		{
+			return null;
+		}
+			
+		
 	}
 	@Override
 	public E set(int i, E o) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		if(i<tamanio)
+		{
+			E temp = arreglo[i];
+			arreglo[i] = o;
+			return temp;
+		}
+		else
+		{
+			return null;
+		}
 	}
 	@Override
 	public void add(int i, E o) {
 		// TODO Auto-generated method stub
-		
+		if(i<tamanio)
+		{
+			arreglo[i] = o;
+			
+		}
 	}
 	@Override
 	public E remove(int i) {
@@ -308,7 +328,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		{
 			if(i< arreglo.length)
 			{
-				if(arreglo[j] == arreglo[i])
+				if(arreglo[j].equals(arreglo[i]))
 				{
 					arreglo[j] = null;
 					

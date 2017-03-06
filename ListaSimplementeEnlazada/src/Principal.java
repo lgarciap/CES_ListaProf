@@ -24,9 +24,12 @@ public class Principal {
 		lista.addFirst(6);
 		lista.addFirst(8);
 		lista.addFirst(7);
-		int value = 3;
+		int value = 25;
+		int indice = 8;
+		lista.add(indice,value);
+		
 		lista.removeFirst();
-			System.out.println(lista.get(value));
+			System.out.println(lista.get(indice));
 	}
 	
 	
