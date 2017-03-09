@@ -151,6 +151,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 	@Override
 	public E removeFirst() {
 		// TODO Auto-generated method stub
+		E valor = arreglo[0];
 		arreglo[0] = null;
 		for(int i=0 ; i < arreglo.length;i++)
 		{
@@ -161,14 +162,15 @@ public class ListaSecuencial<E> implements ILista<E> {
 				
 			}
 		}
-		return (E)arreglo;
+		return valor;
 		
 	}
 	@Override
 	public E removeLast() {
 		// TODO Auto-generated method stub
+		E valor = arreglo[cantElementos-1];
 		arreglo[cantElementos-1] = null;
-		return (E)arreglo;
+		return valor;
 	}
 	@Override
 	public E remove(E value) {
@@ -188,7 +190,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 			}
 		}
 		
-		return (E)arreglo;
+		return value;
 		
 	}
 	@Override
@@ -208,8 +210,9 @@ public class ListaSecuencial<E> implements ILista<E> {
 		// TODO Auto-generated method stub
 		if(cantElementos>0)
 		{
+			E valor = arreglo[cantElementos-1];
 			arreglo[cantElementos-1] = null;
-			return (E)arreglo;
+			return valor;
 		}
 		else
 		{
@@ -327,6 +330,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 	}
 	@Override
 	public E remove(int i) {
+		E valor = arreglo[i];
 		for(int j=0 ; j < arreglo.length;j++)
 		{
 			if(i< arreglo.length)
@@ -345,7 +349,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 				
 			}
 		}
-		return (E)arreglo;
+		return valor;
 		
 	}
 		
