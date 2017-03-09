@@ -7,13 +7,13 @@
  *
  */
 public class Nodo<E> {
-	private E valor;
-	private Nodo siguiente;
+	protected E valor;
+	protected Nodo<E> siguiente;
 	/**
 	 * @param valor
 	 * @param siguiente
 	 */
-	public Nodo(E valor, Nodo siguiente) {
+	public Nodo(E valor, Nodo<E> siguiente) {
 		this.valor = valor;
 		this.siguiente = siguiente;
 	}
@@ -48,12 +48,14 @@ public class Nodo<E> {
 	public void setSiguiente(Nodo siguiente) {
 		this.siguiente = siguiente;
 	}
-	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	public String toString(){
-		return valor.toString();			
+	@Override
+	public String toString() {
+		return "Nodo [valor=" + valor + ", siguiente=" + siguiente + "]";
 	}
+	
+	
 	
 }
