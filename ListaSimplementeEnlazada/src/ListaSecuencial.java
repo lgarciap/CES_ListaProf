@@ -15,9 +15,9 @@ public class ListaSecuencial<E> implements ILista<E> {
 	/**
 	 * 
 	 */
+
 	
 	
-	@SuppressWarnings("unchecked")
 	public ListaSecuencial(int tamanio) {
 		// TODO Auto-generated constructor stub
 		this.tamanio = tamanio;
@@ -31,6 +31,8 @@ public class ListaSecuencial<E> implements ILista<E> {
 	public int getTamanio() {
 		return tamanio;
 	}
+	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -42,8 +44,8 @@ public class ListaSecuencial<E> implements ILista<E> {
 		result = prime * result + cantElementos;
 		result = prime * result + tamanio;
 		return result;
-	}
-
+	} 
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -55,7 +57,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ListaSecuencial<?> other = (ListaSecuencial<?>) obj;
+		ListaSecuencial other = (ListaSecuencial) obj;
 		if (!Arrays.equals(arreglo, other.arreglo))
 			return false;
 		if (cantElementos != other.cantElementos)
@@ -108,7 +110,6 @@ public class ListaSecuencial<E> implements ILista<E> {
 		arreglo = null;
 		this.cantElementos = 0;
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public void addFirst(Object value) {
 		// TODO Auto-generated method stub
@@ -126,7 +127,6 @@ public class ListaSecuencial<E> implements ILista<E> {
 		
 		
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public void addLast(Object value) {
 		// TODO Auto-generated method stub
@@ -148,7 +148,6 @@ public class ListaSecuencial<E> implements ILista<E> {
 		// TODO Auto-generated method stub
 		return arreglo[tamanio-1];
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public E removeFirst() {
 		// TODO Auto-generated method stub
@@ -165,14 +164,12 @@ public class ListaSecuencial<E> implements ILista<E> {
 		return (E)arreglo;
 		
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public E removeLast() {
 		// TODO Auto-generated method stub
 		arreglo[cantElementos-1] = null;
 		return (E)arreglo;
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public E remove(E value) {
 
@@ -206,7 +203,6 @@ public class ListaSecuencial<E> implements ILista<E> {
 		
 		
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public E remove() {
 		// TODO Auto-generated method stub
@@ -329,7 +325,6 @@ public class ListaSecuencial<E> implements ILista<E> {
 			
 		}
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public E remove(int i) {
 		for(int j=0 ; j < arreglo.length;j++)
