@@ -1,6 +1,9 @@
+package Listas;
 /**
  * 
  */
+
+import java.util.Iterator;
 
 /**
  * @author flaquitqm
@@ -9,7 +12,7 @@
 public class ListaSimplementeEnlazada<E> implements ILista<E>{
 	private int cantEl;
 	private Nodo<E> cabeza;
-	
+	private IteradorListaEnlazada<E> iterador;
 	
 	
 	/**
@@ -18,7 +21,7 @@ public class ListaSimplementeEnlazada<E> implements ILista<E>{
 	public ListaSimplementeEnlazada() {
 		// TODO Auto-generated constructor stub
 		cantEl = 0;
-		cabeza = new Nodo<E>(null);
+		//cabeza = new Nodo<E>(null);
 	}
 	/**
 	 * @param cantEl
@@ -31,7 +34,11 @@ public class ListaSimplementeEnlazada<E> implements ILista<E>{
 		}
 		else
 			 cantEl = 0;
+		iterador = new IteradorListaEnlazada<E>(cabeza);
 	}
+	
+	
+	
 	/**
 	 * @return la cantidad de elementos de la lista (cantEl)
 	 */
@@ -57,9 +64,21 @@ public class ListaSimplementeEnlazada<E> implements ILista<E>{
 		this.cabeza = cabeza;
 	}
 	
+	/**
+	 * @return the iterador
+	 */
+	public IteradorListaEnlazada<E> getIterador() {
+		return iterador;
+	}
+	/**
+	 * @param iterador the iterador to set
+	 */
+	public void setIterador(IteradorListaEnlazada<E> iterador) {
+		this.iterador = iterador;
+	}
 	@Override
 	public int size() {
-		if (cabeza != null)
+		if (cabeza == null)
 			return 0;
 		else
 			return cantEl;
@@ -374,5 +393,51 @@ public class ListaSimplementeEnlazada<E> implements ILista<E>{
 		}
 		return null;
 	}
+	
+	//Trabajo con el iterador
+		/**
+		 * Devuelve el elemento siguiente
+		 * @return el valor del siguiente elemento de la lista
+		 */
+		public E siguiente(){
+			if (iterador == null)
+				iterador = new IteradorListaEnlazada<E>(cabeza);
+			return iterador.next();
+		}
+		
+		/**
+		 * Devuelve true si no se ha llegado al final de la lista
+		 * @return true si tiene siguiente
+		 */
+		public boolean tieneSiguiente(){
+			if (iterador == null)
+				iterador = new IteradorListaEnlazada<E>(cabeza);
+			return iterador.hasNext();
+		}
+		
+		/**
+		 * Obtiene el elemento de la posición actual del iteración
+		 * @return E el elemento
+		 */
+		public E elementoActual(){
+			if (iterador == null)
+				iterador = new IteradorListaEnlazada<E>(cabeza);
+			return iterador.get();
+		}
+		
+		public void reiniciarIterador(){
+			if (iterador == null)
+				iterador = new IteradorListaEnlazada<E>(cabeza);
+			iterador.reset();
+		}
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
+		@Override
+		public String toString() {
+			return "ListaSimplementeEnlazada [cantEl=" + cantEl + ", cabeza=" + cabeza + "]";
+		}
+		
+		
 
 }

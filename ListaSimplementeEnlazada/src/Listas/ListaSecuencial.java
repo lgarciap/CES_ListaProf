@@ -1,4 +1,6 @@
+package Listas;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * 
@@ -12,17 +14,20 @@ public class ListaSecuencial<E> implements ILista<E> {
 	private int tamanio;
 	private E[] arreglo;
 	private int cantElementos;
+	private IteradorArreglo<E> iterador;
 	/**
 	 * 
 	 */
 
 	
 	
+	@SuppressWarnings("unchecked")
 	public ListaSecuencial(int tamanio) {
 		// TODO Auto-generated constructor stub
 		this.tamanio = tamanio;
 		arreglo = (E[]) new Object[tamanio];
 		cantElementos = 0;
+		iterador = new IteradorArreglo<E>(tamanio, arreglo);
 	}
 	
 	/**
@@ -57,7 +62,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ListaSecuencial other = (ListaSecuencial) obj;
+		ListaSecuencial<?> other = (ListaSecuencial<?>) obj;
 		if (!Arrays.equals(arreglo, other.arreglo))
 			return false;
 		if (cantElementos != other.cantElementos)
@@ -86,6 +91,20 @@ public class ListaSecuencial<E> implements ILista<E> {
 		this.arreglo = arreglo;
 	}
 
+	/**
+	 * @return the iterador
+	 */
+	public IteradorArreglo<E> getIterador() {
+		return iterador;
+	}
+
+	/**
+	 * @param iterador the iterador to set
+	 */
+	public void setIterador(IteradorArreglo<E> iterador) {
+		this.iterador = iterador;
+	}
+
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -110,6 +129,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		arreglo = null;
 		this.cantElementos = 0;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addFirst(Object value) {
 		// TODO Auto-generated method stub
@@ -127,6 +147,7 @@ public class ListaSecuencial<E> implements ILista<E> {
 		
 		
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addLast(Object value) {
 		// TODO Auto-generated method stub
@@ -352,7 +373,44 @@ public class ListaSecuencial<E> implements ILista<E> {
 		return valor;
 		
 	}
-		
 	
+	
+	//Trabajo con el iterador
+	/**
+	 * Devuelve el elemento siguiente
+	 * @return el valor del siguiente elemento de la lista
+	 */
+	public E siguiente(){
+		return iterador.next();
+	}
+	
+	/**
+	 * Devuelve true si no se ha llegado al final de la lista
+	 * @return true si tiene siguiente
+	 */
+	public boolean tieneSiguiente(){
+		return iterador.hasNext();
+	}
+	
+	/**
+	 * Obtiene el elemento de la posición actual del iteración
+	 * @return E el elemento
+	 */
+	public E elementoActual(){
+		return iterador.get();
+	}
+	
+	public void reiniciarIterador(){
+		iterador.reset();
+	}
+	
+	public String toString(){
+		String cadena = "";
+		for (int i = 0; i < arreglo.length; i++) {
+			if (arreglo[i]!=null)
+				cadena = cadena + arreglo[i].toString() + "\n";
+		}
+		return cadena;
+	}
 	
 }
